@@ -1,0 +1,56 @@
+﻿@model TCCTrabalho3.Models.Carrinho
+
+@{
+    ViewData["Title"] = "Carrinho de Compras";
+
+    var carrinho = Model ?? new Carrinho();
+}
+
+<div class="container">
+    <h1>Carrinho de Compras</h1>
+
+    @if (carrinho.Items.Count < 1)
+    {
+        <p>Seu carrinho está vazio.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Total</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in carrinho.Items)
+                {
+                    <tr>
+                        <td>@item.Cursos.Nome</td>
+                        <td>@item.Quantidade</td>
+                        <td>@item.Cursos.Preco.ToString("C")</td>
+                        <td>@(item.Quantidade * item.Cursos.Preco)</td>
+                        <td>
+                            <form asp-action="RemoverDoCarrinho" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="Cursoid" value="@item.CursoId" />
+                                <button type="submit" class="btn btn-danger">Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <h4>Total: @(carrinho.Items.Sum(i => i.Quantidade * i.Cursos.Preco).ToString("C"))</h4>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-action="Checkout" class="btn btn-success">Finalizar Compra</a>
+            }
+        </div>
+    }
+</div>

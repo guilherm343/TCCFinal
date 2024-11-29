@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TCCTrabalho3.Models.VendasModel>
+
+@{
+    var cursos = Model.Select(v => v.CursoVendido).ToArray();
+    var quantidade = Model.GroupBy(v => v.CursoVendido)
+                          .Select(g => g.Count()).ToArray();
+    var cursosJson = Newtonsoft.Json.JsonConvert.SerializeObject(cursos);
+    var quantidadeJson = Newtonsoft.Json.JsonConvert.SerializeObject(quantidade);
+}
+
+<h1>Relatório de Vendas</h1>
+
+<div class="container mt-5">
+    <h3>Gráfico de Vendas por Curso</h3>
+    <canvas id="graficoVendas" width="400" height="200"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Certifique-se de usar JSON.parse() para interpretar corretamente os dados
+    var cursos = JSON.parse('@Html.Raw(cursosJson)');
+    var quantidade = JSON.parse('@Html.Raw(quantidadeJson)');
+
+    var ctx = document.getElementById('graficoVendas').getContext('2d');
+    var graficoVendas = new Chart(ctx, {
+        type: 'line', // Tipo de gráfico: bar, line, pie, etc.
+        data: {
+            labels: cursos,
+            datasets: [{
+                label: 'Quantidade de Vendas',
+                data: quantidade,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

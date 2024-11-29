@@ -1,0 +1,90 @@
+﻿@model IEnumerable<TCCTrabalho3.Models.CursosModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Conteúdo Principal -->
+        <main role="main" class="flex-wrap">
+            <div>
+                <h2>Cursos Disponíveis</h2>
+                <a class="butao btn btn-primary" asp-area="" asp-controller="Curso" asp-action="AdicionarCurso">Adicionar um curso</a>
+
+                @if (Model != null && Model.Any())
+                {
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col">
+                                <div class="card h-50">
+                                    <img src="~/Nova pasta/download (9).png" class="card-img-top" alt="Imagem do curso">
+                                      <div class="card-body">
+                            <h5 class="card-title">@item.Nome</h5>
+                            <p class="card-text">Descrição do Curso: @item.Descricao</p>
+                            <p class="card-text">Preço do Curso: @item.Preco.ToString("C")</p>
+                            <a href="@Url.Action("AdcionarParaCarrinho", "Carrinho", new { id = item.Id })" class="btn btn-primary">
+                                Adicionar ao Carrinho
+                            </a>
+                        
+                               
+                            </div>
+        
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p>Não há cursos disponíveis no momento!</p>
+                }
+
+                
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        
+                   </div
+            </div>
+        </main>
+    </div>
+</div>
+
+
+
+    <a class="btn btn-primary mt-3" asp-page="/Cursos"><i class="bi bi-arrow-up"> </i>Voltar ao Topo</a>
+</div>
+ 
+
+
+<!-- Offcanvas para Detalhes da Compra -->
+
+
+<style>
+    .course-list {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin: 2rem 0;
+    }
+
+    .card {
+        width: 300px;
+        border: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+        border-radius: 0.375rem 0.375rem 0 0;
+    }
+
+    .btn {
+        margin: 5px;
+    }
+</style>

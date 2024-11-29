@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (!string.IsNullOrEmpty(ViewBag.MensagemSucesso))
+    {
+        <div class="modal fade" id="sucessoModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Compra Concluída</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>@ViewBag.MensagemSucesso</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center d-flex flex-column justify-content-center align-items-center">
+    <img src="~/nova pasta/logo.png" style="height:268; width:203" class="p-5"/>
+    <p>
+        A CashCoach é uma plataforma inovadora dedicada a transformar a forma como você aprende e se desenvolve.
+        Com o compromisso de oferecer cursos de alta qualidade, buscamos democratizar o acesso à educação, tornando-a mais acessível e relevante para todos.
+        Nossa missão é capacitar nossos alunos a atingirem suas metas pessoais e profissionais, fornecendo ferramentas e conteúdos que inspirem o máximo de seu potencial.
+    </p>
+    <p>
+        Acreditamos em um aprendizado inclusivo e estimulante, onde cada indivíduo pode desenvolver habilidades essenciais para o sucesso. Na CashCoach, trabalhamos para criar um ambiente educacional que favoreça o crescimento e a evolução, proporcionando a todos a oportunidade de alcançar seu pleno desenvolvimento.
+        Seja para avançar na carreira ou conquistar novos objetivos pessoais, nossa plataforma está aqui para apoiar sua jornada de aprendizado e transformação.
+    </p>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sucessoModal = document.getElementById('sucessoModal');
+        if (sucessoModal) {
+            var modal = new bootstrap.Modal(sucessoModal);
+            modal.show();
+        }
+    });
+</script>
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item" style="background-color:#ffff; margin-top:5px;">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" style="background-color: #A9A9A9" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Cursos Online
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body" style="color:black;">
+
+                Cursos online são programas educacionais disponibilizados pela internet, permitindo que os alunos aprendam sobre diversos temas de forma remota. Eles podem ser acessados a qualquer momento e de qualquer lugar, proporcionando flexibilidade e conveniência. Esses cursos podem incluir aulas em vídeo, materiais de leitura, exercícios interativos, avaliações e até certificações.
+
+                Características principais:
+                Flexibilidade: Os alunos podem estudar no próprio ritmo, adaptando o aprendizado à sua rotina.
+                Variedade de temas: Existem cursos sobre praticamente qualquer assunto, desde habilidades técnicas, como programação e design, até áreas de interesse pessoal, como culinária e música.
+                Certificação: Muitos cursos oferecem certificados após a conclusão, que podem ser úteis para impulsionar carreiras ou complementar currículos.
+                Interatividade: Alguns cursos incluem fóruns, sessões ao vivo e interações com instrutores ou outros alunos.
+            </div>
+        </div>
+    </div>
+    @***********************************  Marketing **********************************************@
+    <div class="accordion-item" style="background-color:#ffff; margin-top:5px;">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" style="background-color: #A9A9A9" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                MARKETING DIGITAL
+            </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body" style="color:black;">
+                Marketing Digital é o conjunto de estratégias e ações realizadas no ambiente online com o objetivo de promover produtos, serviços ou marcas, alcançar o público-alvo e gerar resultados, como vendas ou engajamento. Ele utiliza canais digitais como redes sociais, sites, blogs, e-mails e plataformas de anúncios para conectar empresas e consumidores de maneira eficiente.
+
+                Principais áreas do Marketing Digital
+                SEO (Search Engine Optimization):
+
+                Otimização de sites para aparecer nos primeiros resultados de buscas no Google e outros motores de busca.
+                Técnicas incluem uso de palavras-chave, links e melhorias no conteúdo.
+                Mídia Paga (Publicidade Online):
+
+                Anúncios pagos em plataformas como Google Ads, Facebook Ads, Instagram Ads e LinkedIn Ads.
+                Segmentação permite atingir públicos específicos com alta precisão.
+                Marketing de Conteúdo:
+
+                Criação de conteúdos relevantes, como blogs, eBooks, vídeos e posts, para atrair e engajar o público.
+                Estratégia eficaz para educar, gerar leads e construir autoridade.
+                Redes Sociais:
+
+                Uso de plataformas como Instagram, Facebook, TikTok, Twitter e LinkedIn para engajar o público e divulgar a marca.
+                Importante para interagir diretamente com os clientes.
+               
+            </div>
+        </div>
+    </div>
+
+
+   
